@@ -33,10 +33,12 @@ const userSlice = createSlice({
       addToLocal(state.userInfo);
     },
     removeUser: (state, action) => {
-      state.userInfo = state.userInfo.filter((user, index) => index !== action.payload);
+      const userIdToRemove = action.payload;
+      state.userInfo = state.userInfo.filter((user) => user.id !== userIdToRemove);
       state.isOpen = false;
       addToLocal(state.userInfo);
     },
+
 
     editUser: (state, action) => {
       state.userInfo = state.userInfo.map((user) => {
